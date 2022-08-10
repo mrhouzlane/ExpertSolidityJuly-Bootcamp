@@ -1,5 +1,4 @@
-// I AM NOT DONE
-
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.4;
 contract SubOverflow {
 
@@ -7,9 +6,13 @@ contract SubOverflow {
     function subtract(uint x, uint y) public pure returns (uint) {        
 
         // Write assembly code that handles overflows        
-        assembly {                        
-         
+        assembly {
+            let result := 0
+            if gt(x, y) {
+                result := sub(x, y)
+            }
+            mstore(0x0, result)
+            return(0x0, 32)
         }
     }    
 }
-

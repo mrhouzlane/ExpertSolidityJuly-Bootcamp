@@ -1,5 +1,4 @@
-// I AM NOT DONE
-
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.4;
 contract Scope {
 
@@ -9,10 +8,10 @@ contract Scope {
 
         // Modify state of the count from within 
         // the assembly segment
-        assembly {                                 
-          
+        assembly {          
+            let v := count.slot
+            v := add(count.slot, numb)
+            sstore(0x0, v)
         }
     }    
 }
-
-                      

@@ -1,5 +1,4 @@
-// I AM NOT DONE
-
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.4;
 contract Intro {
     function intro() public pure returns (uint16) {   
@@ -10,16 +9,13 @@ contract Intro {
         assembly {            
             // stack variables are instantiated with 
             // let variable_name := VALUE            
-
             // instantiate stack variable that holds value of mol            
-            
-
+            let v := mol
             // To return it needs to be stored in memory
             // with command mstore(MEMORY_LOCATION, STACK_VARIABLE)
-            
-            
-            // to return you need to specify address and the size from the starting point                    
-            
+            mstore(0x0, v)
+            // to return you need to specify address and the size from the starting point         
+            return(0x0, 32)
         }
     }       
 }
